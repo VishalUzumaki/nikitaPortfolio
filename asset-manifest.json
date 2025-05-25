@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/nikitaPortfolio/static/css/main.e6c13ad2.css",
+    "main.js": "/nikitaPortfolio/static/js/main.cdf2b845.js",
+    "static/js/453.a8183ca1.chunk.js": "/nikitaPortfolio/static/js/453.a8183ca1.chunk.js",
+    "index.html": "/nikitaPortfolio/index.html",
+    "main.e6c13ad2.css.map": "/nikitaPortfolio/static/css/main.e6c13ad2.css.map",
+    "main.cdf2b845.js.map": "/nikitaPortfolio/static/js/main.cdf2b845.js.map",
+    "453.a8183ca1.chunk.js.map": "/nikitaPortfolio/static/js/453.a8183ca1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.cdf2b845.js"
+  ]
+}
