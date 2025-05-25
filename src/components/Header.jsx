@@ -1,29 +1,42 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 
 const headerStyle = {
-  width: '100%',
-  background: 'linear-gradient(90deg, #b3e0ff 0%, #fff 50%, #ffb6c1 100%)',
-  color: '#000',
-  padding: '20px 0',
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  width: '100vw',
+  height: '100vh',
+  background: '#000',
+  color: '#fff',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  zIndex: 1000,
 };
 
 const titleStyle = {
-  fontSize: '2rem',
+  fontSize: '5rem',
   fontWeight: 'bold',
-  color: '#000',
+  color: '#fff',
+  letterSpacing: '0.2em',
 };
 
 function Header() {
+  const controls = useAnimation();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      controls.start({ y: '-100vh', opacity: 0, transition: { duration: 0.8, ease: 'easeInOut' } });
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, [controls]);
+
   return (
     <motion.header
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        style={headerStyle}
+      style={headerStyle}
+      initial={{ y: 0, opacity: 1 }}
+      animate={controls}
     >
       <span style={titleStyle}>NIKITA</span>
     </motion.header>

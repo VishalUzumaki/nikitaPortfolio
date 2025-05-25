@@ -43,19 +43,19 @@ if (typed) visibleLines.push(typed);
     <div style={{
       width: '600px',
       minHeight: 80,
-      fontSize: '1.1rem',
-      color: '#222',
-      fontWeight: 500,
-      background: 'rgba(255,255,255,0.85)',
-      borderRadius: 12,
+      fontSize: '2.2rem',
+      color: '#ff69b4',
+      fontWeight: 700,
+      background: 'rgba(255,255,255,0.0)',
+      borderRadius: 0,
       padding: '18px 24px',
-      boxShadow: '0 2px 12px rgba(0,0,0,0.08)',
+      boxShadow: 'none',
       overflow: 'hidden',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'flex-end',
       height: 200,
-      lineHeight: 1.5,
+      lineHeight: 1.3,
       position: 'relative'
     }}>
       {visibleLines.map((line, idx) => (
