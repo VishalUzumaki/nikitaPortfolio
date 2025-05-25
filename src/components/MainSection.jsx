@@ -87,7 +87,7 @@ function MainSection() {
   return (
     <section style={{ ...containerStyle, flexDirection: 'row' }}>
       <motion.img
-        src="/main.jpg"
+        src={process.env.PUBLIC_URL +"/main.jpg"}
         alt="Center"
         style={imageStyle}
         initial={{ opacity: 0, y: 100, x: 0 }}
@@ -104,7 +104,7 @@ function MainSection() {
           muted
           playsInline
           style={videoStyle}
-          src="/Video.mp4" // Replace with your video path
+          src={process.env.PUBLIC_URL + "/Video.mp4"} // Replace with your video path
         />
         <motion.span
           key={captionIndex}

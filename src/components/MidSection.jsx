@@ -87,7 +87,7 @@ function MidSection() {
             onMouseLeave={() => setHovered(hovered)}
           >
             <img
-              src={img}
+              src={process.env.PUBLIC_URL +img}
               alt={`cube-${idx}`}
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               draggable={false}
@@ -97,7 +97,7 @@ function MidSection() {
       </div>
       <div style={rightStyle}>
         <img
-          src={images[hovered]}
+          src={process.env.PUBLIC_URL +images[hovered]}
           alt="enlarged"
           style={enlargedStyle}
           draggable={false}
