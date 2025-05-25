@@ -76,7 +76,7 @@ function MainSection() {
     transition: { duration: 1.2, ease: 'easeOut' },
   }).then(() => {
     imageControls.start({
-      x: isMobile ? -20 : -80,
+      x: isMobile ? -10 : -80,
       transition: { duration: 0.8, ease: 'easeInOut' },
     });
     rightControls.start({
@@ -86,7 +86,7 @@ function MainSection() {
     });
   });
 }, [imageControls, rightControls, isMobile]);
-  
+
   useEffect(() => {
     if (rightControls) {
       const interval = setInterval(() => {

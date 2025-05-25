@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import Headers from './components/Header';
 import MainSection from './components/MainSection';
 import MidSection from './components/MidSection';
+import Gallery from './components/Gallery';
 import './App.css';
 
 function App() {
@@ -43,7 +44,10 @@ function App() {
             <MainSection />
           </div>
           <div className="section">
+
+            <Gallery />
             <MidSection />
+
           </div>
         </div>
       </div>

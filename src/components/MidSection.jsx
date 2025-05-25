@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AnimatedCaption from "./AnimatedCaption";
 
 const images = [
@@ -33,7 +33,7 @@ const middleStyle = {
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  gap: '10px', // less gap between cubes
+  gap: '10px',
   padding: 0,
 };
 
@@ -54,7 +54,7 @@ const rightStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  padding: '0 10px', // minimal padding
+  padding: '0 10px',
 };
 
 const enlargedStyle = {
@@ -69,7 +69,91 @@ const enlargedStyle = {
 
 function MidSection() {
   const [hovered, setHovered] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
 
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 600);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  if (isMobile) {
+    // Stack vertically on mobile
+    return (
+      <section
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100vw',
+          minHeight: 500,
+          background: '#f7f7fa',
+          boxSizing: 'border-box',
+          padding: '24px 0',
+          alignItems: 'center',
+        }}
+      >
+        <div style={{ width: '95vw', display: 'flex', justifyContent: 'center', marginBottom: 24 }}>
+          <AnimatedCaption />
+        </div>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          width: '100%',
+          gap: 16,
+        }}>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            gap: 8,
+            marginBottom: 16,
+          }}>
+            {images.map((img, idx) => (
+              <div
+                key={img}
+                style={{
+                  ...cubeStyle,
+                  width: 56,
+                  height: 56,
+                  border: hovered === idx ? '2px solid #007aff' : cubeStyle.border,
+                }}
+                onMouseEnter={() => setHovered(idx)}
+                onTouchStart={() => setHovered(idx)}
+              >
+                <img
+                  src={process.env.PUBLIC_URL + img}
+                  alt={`cube-${idx}`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  draggable={false}
+                />
+              </div>
+            ))}
+          </div>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%',
+          }}>
+            <img
+              src={process.env.PUBLIC_URL + images[hovered]}
+              alt="enlarged"
+              style={{
+                ...enlargedStyle,
+                width: '90vw',
+                height: 'auto',
+                maxHeight: 320,
+                borderRadius: 16,
+              }}
+              draggable={false}
+            />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Desktop layout
   return (
     <section style={containerStyle}>
       <div style={leftStyle}>
@@ -87,7 +171,7 @@ function MidSection() {
             onMouseLeave={() => setHovered(hovered)}
           >
             <img
-              src={process.env.PUBLIC_URL +img}
+              src={process.env.PUBLIC_URL + img}
               alt={`cube-${idx}`}
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               draggable={false}
@@ -97,7 +181,7 @@ function MidSection() {
       </div>
       <div style={rightStyle}>
         <img
-          src={process.env.PUBLIC_URL +images[hovered]}
+          src={process.env.PUBLIC_URL + images[hovered]}
           alt="enlarged"
           style={enlargedStyle}
           draggable={false}
